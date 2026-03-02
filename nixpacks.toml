@@ -1,0 +1,12 @@
+
+[phases.setup]
+nixPkgs = ['...', 'python']
+
+[phases.install]
+cmds = ['poetry install --no-dev --no-interactive --no-ansi']
+
+[phases.build]
+cmds = ['python manage.py collectstatic --no-input','python manage.py makemigrations store','python manage.py migrate store','python manage.py migrate','python manage.py seed data.json']
+
+[start]
+cmd = 'python manage.py runserver'
